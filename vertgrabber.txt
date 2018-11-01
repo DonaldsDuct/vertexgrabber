@@ -1,0 +1,17 @@
+import maya.cmds as cmds
+# select a vertex then run
+vertex = cmds.ls(sl=True)[0]
+print cmds.xform(vertex, t = True, ws = True, q = True)
+
+import pymel.core as pm
+# select a vertex then run
+vertex = pm.ls(sl=True)[0]
+print vertex.getPosition(space = 'world')
+
+# select multiple vertices and create dictionary
+vertices = pm.ls(sl=True)
+vertexDict = {}
+for vertex in vertices:
+    vertexDict[vertex] = vertex.getPosition(space = 'world')
+    
+print vertexDict
